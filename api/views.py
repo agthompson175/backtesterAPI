@@ -10,13 +10,11 @@ from .models import Stock
 from .data_context import get_chart_data, get_candle_data, general_info
 import backtrader
 import datetime
-from flask_cors import CORS
 
 main = Blueprint('main', __name__)
 
 
 @main.route('/inputs', methods=['POST'])
-@cross_origin()
 def inputs():
     stock_data = request.get_json()
     new_stock = Stock(ticker=stock_data['ticker'], size=stock_data['size'])
